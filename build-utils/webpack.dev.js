@@ -2,6 +2,10 @@ const commonPaths = require("./common-paths");
 
 const webpack = require("webpack");
 
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+
+const smp = new SpeedMeasurePlugin();
+
 const port = process.env.PORT || 3000;
 
 const config = {
@@ -48,4 +52,4 @@ const config = {
   },
 };
 
-module.exports = config;
+module.exports = smp.wrap(config);
